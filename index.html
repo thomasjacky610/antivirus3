@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShieldZone — Premium Antivirus Protection</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #0a6cff;
+  --blue-dark: #0050cc;
+  --blue-light: #3d8cff;
+  --cyan: #00c8ff;
+  --dark: #050d1a;
+  --dark2: #0a1628;
+  --dark3: #0f1f3d;
+  --text: #c8d8f0;
+  --text-soft: #7a90b8;
+  --white: #ffffff;
+  --border: rgba(0,100,255,0.15);
+  --green: #00d97e;
+  --red: #ff4060;
+  --gold: #ffb800;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(5,13,26,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 70px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px; font-weight: 800;
+  color: var(--white); letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--cyan); }
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.nav-links a {
+  color: var(--text-soft); text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  padding: 8px 16px; border-radius: 8px;
+  transition: 0.2s;
+}
+.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.nav-cta {
+  background: var(--blue) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+.nav-cta:hover { background: var(--blue-light) !important; }
+@media(max-width:768px){ nav { padding: 14px 20px; } .nav-links { display: none; } }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 130px 10px 10px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse at 70% 50%, rgba(0,100,255,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(0,200,255,0.07) 0%, transparent 50%),
+              var(--dark);
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,100,255,0.18) 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.4;
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+  max-width: 1200px; margin: auto; width: 100%;
+}
+@media(max-width:900px){ .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; } }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,200,255,0.1);
+  border: 1px solid rgba(0,200,255,0.3);
+  color: var(--cyan);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 800; color: var(--white);
+  line-height: 1.08; margin-bottom: 22px;
+  letter-spacing: -1px;
+}
+.hero h1 em { font-style: normal; color: var(--cyan); }
+.hero p {
+  font-size: 17px; color: var(--text-soft);
+  max-width: 480px; margin-bottom: 40px;
+  font-weight: 300; line-height: 1.8;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--blue); color: white;
+  padding: 14px 32px; border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 8px 30px rgba(0,100,255,0.35);
+}
+.btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,100,255,0.45); }
+.btn-ghost {
+  background: transparent; color: var(--text);
+  padding: 14px 30px; border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none; border: 1px solid var(--border);
+  cursor: pointer; transition: 0.25s;
+}
+.btn-ghost:hover { border-color: rgba(0,100,255,0.5); color: var(--white); background: rgba(0,100,255,0.08); }
+
+.hero-stats {
+  display: flex; gap: 36px; margin-top: 52px;
+  padding-top: 36px; border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.h-stat .num {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px; font-weight: 800;
+  color: var(--white); display: block; line-height: 1;
+}
+.h-stat .lbl { font-size: 12px; color: var(--text-soft); letter-spacing: 0.5px; margin-top: 4px; }
+
+/* HERO VISUAL */
+.hero-visual {
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+}
+.shield-wrap {
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,100,255,0.15) 0%, transparent 70%);
+  border: 1px solid rgba(0,100,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  animation: rotate 20s linear infinite;
+}
+@keyframes rotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.shield-inner {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,100,255,0.25) 0%, rgba(0,200,255,0.1) 100%);
+  border: 1px solid rgba(0,200,255,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+  animation: rotate 20s linear infinite reverse;
+}
+.orbit-dot {
+  position: absolute; width: 12px; height: 12px;
+  background: var(--cyan); border-radius: 50%;
+  box-shadow: 0 0 12px var(--cyan);
+}
+.orbit-dot:nth-child(1) { top: 10px; left: 50%; }
+.orbit-dot:nth-child(2) { bottom: 10px; right: 30%; }
+.orbit-dot:nth-child(3) { left: 10px; top: 50%; }
+
+/* ===== TRUST BAR ===== */
+.trust-bar {
+  background: var(--dark2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 70px;
+  display: flex; align-items: center;
+  justify-content: center; gap: 50px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: var(--text-soft); font-weight: 500;
+}
+.trust-item .t-icon { font-size: 20px; }
+.trust-item strong { color: var(--white); }
+
+/* ===== SECTION COMMON ===== */
+section { padding: 95px 70px; }
+@media(max-width:700px){ section { padding: 70px 20px; } }
+
+.s-tag {
+  display: inline-block;
+  background: rgba(0,100,255,0.12);
+  border: 1px solid rgba(0,100,255,0.25);
+  color: var(--cyan);
+  padding: 5px 16px; border-radius: 30px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.s-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800; color: var(--white);
+  line-height: 1.15; margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+.s-sub {
+  font-size: 16px; color: var(--text-soft);
+  font-weight: 300; line-height: 1.8;
+  max-width: 580px;
+}
+.center { text-align: center; }
+.center .s-sub { margin: 0 auto; }
+
+.inner { max-width: 1200px; margin: auto; }
+
+/* ===== PRODUCTS SECTION ===== */
+.products-section { background: var(--dark2); }
+
+/* FILTER TABS */
+.filter-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin: 40px 0 50px;
+}
+.f-tab {
+  padding: 9px 20px; border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent; color: var(--text-soft);
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.f-tab:hover, .f-tab.active {
+  background: var(--blue); color: white;
+  border-color: var(--blue);
+}
+
+/* 3x3 PRODUCT GRID */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media(max-width:900px){ .products-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:580px){ .products-grid { grid-template-columns: 1fr; } }
+
+.product-card {
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 26px;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.product-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.product-card:hover::before { transform: scaleX(1); }
+.product-card:hover {
+  border-color: rgba(0,100,255,0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.product-card.featured {
+  border-color: rgba(0,200,255,0.35);
+  background: linear-gradient(135deg, rgba(0,100,255,0.08) 0%, var(--dark3) 100%);
+}
+.product-card.featured::before { transform: scaleX(1); }
+
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; }
+.product-logo { font-size: 46px; line-height: 1; }
+.card-badges { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
+.badge {
+  font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.badge.best { background: rgba(255,184,0,0.15); color: var(--gold); border: 1px solid rgba(255,184,0,0.3); }
+.badge.new { background: rgba(0,217,126,0.15); color: var(--green); border: 1px solid rgba(0,217,126,0.3); }
+.badge.sale { background: rgba(255,64,96,0.15); color: var(--red); border: 1px solid rgba(255,64,96,0.3); }
+.badge.top { background: rgba(0,100,255,0.15); color: var(--cyan); border: 1px solid rgba(0,200,255,0.3); }
+
+.product-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--white); margin-bottom: 4px;
+}
+.product-brand { font-size: 12px; color: var(--text-soft); font-weight: 500; margin-bottom: 12px; }
+
+.product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; }
+.stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+.rating-num { font-size: 13px; color: var(--text-soft); }
+
+.product-desc { font-size: 13px; color: var(--text-soft); line-height: 1.7; margin-bottom: 18px; font-weight: 300; }
+
+.feature-list { list-style: none; margin-bottom: 22px; }
+.feature-list li {
+  font-size: 13px; color: var(--text);
+  padding: 5px 0; display: flex; align-items: center; gap: 8px;
+}
+.feature-list li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 12px; flex-shrink: 0; }
+
+.card-bottom {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding-top: 18px; border-top: 1px solid var(--border);
+  flex-wrap: wrap; gap: 12px;
+}
+.price-wrap .price {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px; font-weight: 800;
+  color: var(--white); display: block; line-height: 1;
+}
+.price-wrap .price-old { font-size: 13px; color: var(--text-soft); text-decoration: line-through; }
+.price-wrap .price-period { font-size: 11px; color: var(--text-soft); }
+
+.btn-buy {
+  background: var(--blue); color: white;
+  padding: 10px 20px; border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  border: none; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: 0.2s; text-decoration: none;
+  display: inline-block; white-space: nowrap;
+}
+.btn-buy:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+/* ===== FEATURES SECTION ===== */
+.features-section { background: var(--dark); }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 55px;
+}
+@media(max-width:900px){ .features-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:580px){ .features-grid { grid-template-columns: 1fr; } }
+
+.feat-card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 32px 28px;
+  transition: 0.3s;
+}
+.feat-card:hover { border-color: rgba(0,100,255,0.4); transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,0.25); }
+.feat-icon { font-size: 38px; margin-bottom: 16px; display: block; }
+.feat-card h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+.feat-card p { font-size: 14px; color: var(--text-soft); line-height: 1.75; font-weight: 300; }
+
+/* ===== COMPARISON TABLE ===== */
+.compare-section { background: var(--dark2); }
+.compare-table-wrap { overflow-x: auto; margin-top: 50px; }
+.compare-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 14px; min-width: 700px;
+}
+.compare-table th {
+  background: var(--dark3); color: var(--white);
+  padding: 16px 20px; text-align: left;
+  font-family: 'Syne', sans-serif; font-size: 13px;
+  font-weight: 700; letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--blue);
+}
+.compare-table th:first-child { border-radius: 10px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 10px 0 0; }
+.compare-table td {
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+  color: var(--text); vertical-align: middle;
+}
+.compare-table tr:hover td { background: rgba(0,100,255,0.04); }
+.compare-table td:first-child { font-weight: 600; color: var(--white); }
+.check { color: var(--green); font-size: 16px; }
+.cross { color: var(--red); font-size: 16px; }
+.compare-table .highlight td { background: rgba(0,100,255,0.06); }
+.price-cell { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--cyan); }
+
+/* ===== HOW IT WORKS ===== */
+.how-section { background: var(--dark); }
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; margin-top: 55px;
+  position: relative;
+}
+.how-grid::before {
+  content: '';
+  position: absolute; top: 38px; left: 12%;
+  width: 76%; height: 1px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  opacity: 0.4;
+}
+@media(max-width:800px){ .how-grid { grid-template-columns: 1fr 1fr; } .how-grid::before { display: none; } }
+@media(max-width:500px){ .how-grid { grid-template-columns: 1fr; } }
+
+.how-card { text-align: center; position: relative; z-index: 1; }
+.how-num {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  background: var(--dark2);
+  border: 2px solid var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-family: 'Syne', sans-serif;
+  font-size: 26px; font-weight: 800;
+  color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0,100,255,0.2);
+}
+.how-card h3 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.how-card p { font-size: 13px; color: var(--text-soft); line-height: 1.65; font-weight: 300; }
+
+/* ===== STATS SECTION ===== */
+.stats-section {
+  background: linear-gradient(135deg, rgba(0,100,255,0.15) 0%, rgba(0,200,255,0.05) 100%),
+              var(--dark2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; max-width: 1200px; margin: auto;
+  text-align: center;
+}
+@media(max-width:700px){ .stats-grid { grid-template-columns: 1fr 1fr; } }
+.stat-box { padding: 30px 20px; }
+.stat-box .big {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px; font-weight: 800;
+  color: var(--white); display: block; line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-box .big span { color: var(--cyan); }
+.stat-box p { font-size: 14px; color: var(--text-soft); font-weight: 400; }
+
+/* ===== TESTIMONIALS ===== */
+.testi-section { background: var(--dark); }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 55px;
+}
+@media(max-width:900px){ .testi-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:580px){ .testi-grid { grid-template-columns: 1fr; } }
+
+.testi-card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px;
+  transition: 0.3s;
+}
+.testi-card:hover { border-color: rgba(0,100,255,0.3); transform: translateY(-3px); }
+.testi-stars { color: var(--gold); font-size: 15px; letter-spacing: 1px; margin-bottom: 14px; }
+.testi-text { font-size: 14px; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 20px; font-weight: 300; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; color: white;
+  font-family: 'Syne', sans-serif; flex-shrink: 0;
+}
+.testi-name { font-size: 14px; font-weight: 600; color: var(--white); }
+.testi-role { font-size: 12px; color: var(--text-soft); }
+
+/* ===== FAQ ===== */
+.faq-section { background: var(--dark2); }
+.faq-list { max-width: 800px; margin: 50px auto 0; }
+.faq-item {
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  border-radius: 10px; margin-bottom: 12px;
+  overflow: hidden; transition: 0.3s;
+}
+.faq-item:hover { border-color: rgba(0,100,255,0.3); }
+.faq-q {
+  padding: 18px 22px; font-size: 15px;
+  font-weight: 600; color: var(--white);
+  cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center;
+  user-select: none;
+}
+.faq-q::after { content: '+'; font-size: 22px; color: var(--blue); transition: 0.3s; flex-shrink: 0; margin-left: 15px; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  font-size: 14px; color: var(--text-soft); line-height: 1.8;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 22px 20px; }
+
+/* ===== CTA ===== */
+.cta-section {
+  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 50%, rgba(0,200,255,0.8) 100%);
+  text-align: center; padding: 100px 20px;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+  background-size: 30px 30px;
+}
+.cta-section h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(30px,4vw,50px);
+  font-weight: 800; color: white;
+  margin-bottom: 16px; position: relative;
+}
+.cta-section p { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 40px; position: relative; }
+.btn-white {
+  background: white; color: var(--blue);
+  padding: 15px 40px; border-radius: 10px;
+  font-size: 16px; font-weight: 700;
+  text-decoration: none; display: inline-block;
+  transition: 0.3s; position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,0,0,0.3); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #020810;
+  padding: 65px 70px 28px;
+  border-top: 1px solid var(--border);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px; margin-bottom: 50px; max-width: 1200px; margin-left: auto; margin-right: auto;
+}
+@media(max-width:800px){ .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; } }
+@media(max-width:500px){ .footer-grid { grid-template-columns: 1fr; } }
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px; font-weight: 800;
+  color: var(--white); margin-bottom: 12px; display: block;
+}
+.footer-logo span { color: var(--cyan); }
+.footer-desc { font-size: 13px; color: var(--text-soft); line-height: 1.8; max-width: 240px; margin-bottom: 20px; }
+.footer-col h4 { font-size: 12px; font-weight: 700; color: var(--text-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+.footer-col a { display: block; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: 0.2s; }
+.footer-col a:hover { color: var(--cyan); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 24px; text-align: center;
+  font-size: 13px; color: var(--text-soft);
+  max-width: 1200px; margin: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Shield<span>Zone</span></div>
+  <div class="nav-links">
+    <a href="#products">Products</a>
+    <a href="#features">Features</a>
+    <a href="#compare">Compare</a>
+    <a href="#faq">FAQ</a>
+    <a href="" class="nav-cta">Buy</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">🛡️ &nbsp; Trusted by 50M+ Users Worldwide</div>
+      <h1>Having issues with<br>your computer? <em>Talk to an expert now.</em><br></h1>
+      <p>ShieldZone brings together the world's most powerful antivirus software in one place. Find the perfect protection for your device, your data, and your peace of mind.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">Browse Products</a>
+        <a href="#compare" class="btn-ghost">Get FREE diagnosis from our expert.</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><span class="num">50M+</span><span class="lbl">Protected Users</span></div>
+        <div class="h-stat"><span class="num">99.9%</span><span class="lbl">Threat Detection</span></div>
+        <div class="h-stat"><span class="num">9</span><span class="lbl">Top Products</span></div>
+        <div class="h-stat"><span class="num">24/7</span><span class="lbl">Live Support</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="shield-wrap">
+        <div class="orbit-dot"></div>
+        <div class="orbit-dot"></div>
+        <div class="orbit-dot"></div>
+        <div class="shield-inner">🛡️</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="t-icon">✅</span><span><strong>100%</strong> Money Back Guarantee</span></div>
+  <div class="trust-item"><span class="t-icon">🔒</span><span><strong>SSL Secured</strong> Checkout</span></div>
+  <div class="trust-item"><span class="t-icon">⚡</span><span><strong>Instant</strong> Download & Activation</span></div>
+  <div class="trust-item"><span class="t-icon">🎧</span><span><strong>24/7</strong> Customer Support</span></div>
+  <div class="trust-item"><span class="t-icon">🏆</span><span><strong>Award-Winning</strong> Products</span></div>
+</div>
+
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section" id="products">
+  <div class="inner">
+    <div class="center">
+      <div class="s-tag">Our Products</div>
+      <h2 class="s-title">9 Top Antivirus Solutions</h2>
+      <p class="s-sub">Handpicked from the world's leading cybersecurity brands. All products are fully licensed, instantly downloadable, and backed by our 30-day money-back guarantee.</p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="f-tab active">All Products</button>
+      <button class="f-tab">Best Sellers</button>
+      <button class="f-tab">For Windows</button>
+      <button class="f-tab">For Mac</button>
+      <button class="f-tab">Family Plans</button>
+      <button class="f-tab">Business</button>
+    </div>
+
+    <!-- 3x3 PRODUCT GRID -->
+    <div class="products-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card featured">
+        <div class="card-top">
+          <div class="product-logo"><img src="norton.png" alt="" style="width: 170px;"></div>
+          <div class="card-badges">
+            <span class="badge best">⭐ Best Seller</span>
+            <span class="badge top">Editor's Pick</span>
+          </div>
+        </div>
+        <div class="product-name">Norton 360 Deluxe</div>
+        <div class="product-brand">by Norton LifeLock</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.9 (12,450 reviews)</span>
+        </div>
+        <p class="product-desc">The gold standard of antivirus protection. Covers up to 5 devices with real-time threat protection, VPN, dark web monitoring, and 50GB cloud backup.</p>
+        <ul class="feature-list">
+          <li>Real-time malware & ransomware protection</li>
+          <li>Secure VPN — unlimited data</li>
+          <li>50GB encrypted cloud backup</li>
+          <li>Dark web monitoring alerts</li>
+          <li>Password manager included</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$89.99</span>
+            <span class="price">$39.99</span>
+            <span class="price-period">/year · 5 devices</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <div class="card-top">
+          <div class="product-logo"><img src="bitdefender.png" alt="" style="width: 220px;"></div>
+          <div class="card-badges">
+            <span class="badge new">🆕 New</span>
+          </div>
+        </div>
+        <div class="product-name">Bitdefender Total Security</div>
+        <div class="product-brand">by Bitdefender</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.8 (9,820 reviews)</span>
+        </div>
+        <p class="product-desc">Award-winning multi-layer ransomware protection that keeps your documents, pictures, and videos safe. Works across Windows, Mac, iOS, and Android.</p>
+        <ul class="feature-list">
+          <li>Advanced threat defense & anti-phishing</li>
+          <li>Multi-layer ransomware protection</li>
+          <li>Webcam & microphone protection</li>
+          <li>Safe banking & online payment</li>
+          <li>Parental controls included</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$79.99</span>
+            <span class="price">$34.99</span>
+            <span class="price-period">/year · 5 devices</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card">
+        <div class="card-top">
+          <div class="product-logo"><img src="mcafee.webp" alt="" style="width: 170px;"></div>
+          <div class="card-badges">
+            <span class="badge sale">🔥 40% Off</span>
+          </div>
+        </div>
+        <div class="product-name">McAfee Total Protection</div>
+        <div class="product-brand">by McAfee</div>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-num">4.6 (8,340 reviews)</span>
+        </div>
+        <p class="product-desc">Comprehensive protection for unlimited devices under one subscription. Includes identity theft protection, a secure VPN, and McAfee's AI-powered threat intelligence.</p>
+        <ul class="feature-list">
+          <li>Unlimited device coverage</li>
+          <li>Identity theft protection</li>
+          <li>Secure VPN with bank-grade encryption</li>
+          <li>File shredder & PC optimizer</li>
+          <li>Vulnerability scanner</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$109.99</span>
+            <span class="price">$29.99</span>
+            <span class="price-period">/year · unlimited</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card">
+        <div class="card-top">
+          <div class="product-logo"><img src="Kaspersky Internet Security.png" alt="" style="width: 170px;"></div>
+          <div class="card-badges">
+            <span class="badge best">⭐ Top Rated</span>
+          </div>
+        </div>
+        <div class="product-name">Kaspersky Internet Security</div>
+        <div class="product-brand">by Kaspersky Lab</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.8 (11,200 reviews)</span>
+        </div>
+        <p class="product-desc">Globally recognized protection technology trusted by over 400 million users. Consistently scores highest in independent laboratory tests for malware detection.</p>
+        <ul class="feature-list">
+          <li>Real-time antivirus & anti-spyware</li>
+          <li>Safe Money for online banking</li>
+          <li>Privacy protection & webcam guard</li>
+          <li>Anti-phishing & anti-spam</li>
+          <li>Network attack blocker</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$59.99</span>
+            <span class="price">$27.99</span>
+            <span class="price-period">/year · 3 devices</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 5 -->
+      <div class="product-card">
+        <div class="card-top">
+          <div class="product-logo"><img src="Avast Premium Security.png" alt="" style="width: 145px;"></div>
+          <div class="card-badges">
+            <span class="badge new">💡 Popular</span>
+          </div>
+        </div>
+        <div class="product-name">Avast Premium Security</div>
+        <div class="product-brand">by Avast Software</div>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-num">4.5 (7,680 reviews)</span>
+        </div>
+        <p class="product-desc">One of the world's most trusted security brands with over 435 million protected users. Advanced AI detection engine catches new threats before they spread.</p>
+        <ul class="feature-list">
+          <li>AI-powered malware detection</li>
+          <li>Ransomware shield & firewall</li>
+          <li>Wi-Fi inspector & network scanner</li>
+          <li>Webcam shield & sandbox</li>
+          <li>Real site anti-phishing</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$69.99</span>
+            <span class="price">$24.99</span>
+            <span class="price-period">/year · 1 device</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 6 -->
+      <div class="product-card">
+        <div class="card-top">
+          <div class="product-logo"><img src="ESET Internet Security.png" alt="" style="width: 120px;"></div>
+          <div class="card-badges">
+            <span class="badge sale">💼 Business</span>
+          </div>
+        </div>
+        <div class="product-name">ESET Internet Security</div>
+        <div class="product-brand">by ESET</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.7 (6,940 reviews)</span>
+        </div>
+        <p class="product-desc">Lightweight yet powerful protection that runs silently in the background without slowing down your system. Perfect for high-performance computers and gamers.</p>
+        <ul class="feature-list">
+          <li>Ultra-light system footprint</li>
+          <li>Anti-theft for laptops</li>
+          <li>Gamer mode — no interruptions</li>
+          <li>Banking & payment protection</li>
+          <li>Home network monitor</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$49.99</span>
+            <span class="price">$31.99</span>
+            <span class="price-period">/year · 3 devices</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 7 -->
+      <div class="product-card">
+        <div class="card-top">
+          <div class="product-logo"><img src="Trend Micro Maximum Security.png" alt="" style="width: 190px;"></div>
+          <div class="card-badges">
+            <span class="badge best">🏆 Award Winner</span>
+          </div>
+        </div>
+        <div class="product-name">Trend Micro Maximum Security</div>
+        <div class="product-brand">by Trend Micro</div>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-num">4.5 (5,220 reviews)</span>
+        </div>
+        <p class="product-desc">Maximum protection for all your devices with advanced AI learning that adapts to evolving threats in real time. Includes social media privacy scanner and pay guard.</p>
+        <ul class="feature-list">
+          <li>AI-based threat detection</li>
+          <li>Pay Guard for secure payments</li>
+          <li>Social media privacy scanner</li>
+          <li>Folder Shield for ransomware</li>
+          <li>Parental controls & screen time</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$89.95</span>
+            <span class="price">$35.95</span>
+            <span class="price-period">/year · 5 devices</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 8 -->
+      <div class="product-card">
+        <div class="card-top">
+          <div class="product-logo"><img src="Malwarebytes_Premium-removebg-preview.png" alt="" style="width: 130px;"></div>
+          <div class="card-badges">
+            <span class="badge new">🆕 New Launch</span>
+          </div>
+        </div>
+        <div class="product-name">Malwarebytes Premium</div>
+        <div class="product-brand">by Malwarebytes</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.8 (13,100 reviews)</span>
+        </div>
+        <p class="product-desc">The trusted name in malware removal for over 15 years now offers complete real-time protection. Cleans up existing infections other antivirus programs miss entirely.</p>
+        <ul class="feature-list">
+          <li>Crushes malware other AVs miss</li>
+          <li>Real-time protection layer</li>
+          <li>Brute force protection</li>
+          <li>Uninstall legacy antivirus</li>
+          <li>Browser guard extension</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$44.99</span>
+            <span class="price">$33.74</span>
+            <span class="price-period">/year · 1 device</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 9 -->
+      <div class="product-card">
+        <div class="card-top">
+          <div class="product-logo"><img src="AVG Ultimate.png" alt="" style="width: 185px;"></div>
+          <div class="card-badges">
+            <span class="badge sale">👨‍👩‍👧 Family Plan</span>
+          </div>
+        </div>
+        <div class="product-name">AVG Ultimate</div>
+        <div class="product-brand">by AVG Technologies</div>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-num">4.4 (4,890 reviews)</span>
+        </div>
+        <p class="product-desc">Complete protection bundle combining AVG AntiVirus, AVG Internet Security, and AVG TuneUp in one powerful package for unlimited devices across your home.</p>
+        <ul class="feature-list">
+          <li>Antivirus + VPN + PC Optimizer</li>
+          <li>Unlimited device coverage</li>
+          <li>Advanced firewall & email shield</li>
+          <li>Fake website shield</li>
+          <li>Automatic software updates</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="price-wrap">
+            <span class="price-old">$119.99</span>
+            <span class="price">$59.99</span>
+            <span class="price-period">/year · unlimited</span>
+          </div>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+    </div><!-- end products-grid -->
+  </div>
+</section>
+
+
+<!-- FEATURES SECTION -->
+<section class="features-section" id="features">
+  <div class="inner">
+    <div class="center">
+      <div class="s-tag">Why ShieldZone</div>
+      <h2 class="s-title">Everything You Need, All in One Place</h2>
+      <p class="s-sub">We make buying, activating, and managing your cybersecurity software as simple and stress-free as possible. Here is what makes ShieldZone different from anywhere else.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card"><span class="feat-icon">⚡</span><h3>Instant Activation</h3><p>Receive your license key immediately after purchase. No waiting, no shipping. Download and activate your antivirus software in under five minutes from any device.</p></div>
+      <div class="feat-card"><span class="feat-icon">💰</span><h3>Best Price Guaranteed</h3><p>We work directly with software publishers to bring you the lowest prices available anywhere online. Find it cheaper and we will match it — no questions asked.</p></div>
+      <div class="feat-card"><span class="feat-icon">🔐</span><h3>Genuine Licensed Software</h3><p>Every product sold through ShieldZone is a fully genuine, officially licensed product sourced directly from the manufacturer. No cracks, no grey-market keys — ever.</p></div>
+      <div class="feat-card"><span class="feat-icon">🎧</span><h3>Expert Technical Support</h3><p>Our cybersecurity experts are available 24 hours a day, 7 days a week to help with installation, activation, or any technical issue you may experience.</p></div>
+      <div class="feat-card"><span class="feat-icon">🔄</span><h3>30-Day Money Back</h3><p>Not satisfied? We offer a full, hassle-free refund within 30 days of purchase. Your investment is completely protected with our no-questions-asked return policy.</p></div>
+      <div class="feat-card"><span class="feat-icon">📱</span><h3>Multi-Device Coverage</h3><p>Most of our products cover multiple devices under a single subscription — protect your Windows PC, Mac, smartphone, and tablet all from one easy-to-manage account.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="inner">
+    <div class="center">
+      <div class="s-tag">How It Works</div>
+      <h2 class="s-title">Get Protected in 4 Simple Steps</h2>
+      <p class="s-sub">From browsing to being fully protected takes less than 10 minutes. Here is exactly how simple the process is.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <h3>Choose Your Product</h3>
+        <p>Browse our curated selection of 9 top antivirus solutions. Use our comparison table to find the one that fits your devices and budget perfectly.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <h3>Complete Your Purchase</h3>
+        <p>Check out securely with credit card, PayPal, or UPI. Our SSL-encrypted checkout protects your payment information at every step.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <h3>Receive Your License Key</h3>
+        <p>Your license key is delivered to your email inbox instantly after payment confirmation. No waiting periods or delays whatsoever.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">4</div>
+        <h3>Download & Activate</h3>
+        <p>Download the software directly from the official publisher's website and activate it with your key. Full protection in under five minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-box"><span class="big">50<span>M+</span></span><p>Users Protected Globally</p></div>
+    <div class="stat-box"><span class="big">99<span>.9%</span></span><p>Malware Detection Rate</p></div>
+    <div class="stat-box"><span class="big">9</span><p>Premium Products Available</p></div>
+    <div class="stat-box"><span class="big">30<span>-Day</span></span><p>Money Back Guarantee</p></div>
+  </div>
+</div>
+
+
+<!-- COMPARISON TABLE -->
+<section class="compare-section" id="compare">
+  <div class="inner">
+    <div class="center">
+      <div class="s-tag">Side by Side</div>
+      <h2 class="s-title">Compare All Products</h2>
+      <p class="s-sub">Not sure which antivirus is right for you? Use this quick comparison table to see how our top products stack up against each other.</p>
+    </div>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price/Year</th>
+            <th>Devices</th>
+            <th>VPN</th>
+            <th>Firewall</th>
+            <th>Parental Controls</th>
+            <th>Dark Web Monitor</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Norton 360 Deluxe</td>
+            <td class="price-cell">$39.99</td>
+            <td>5</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td>⭐ 4.9</td>
+          </tr>
+          <tr>
+            <td>Bitdefender Total Security</td>
+            <td class="price-cell">$34.99</td>
+            <td>5</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+            <td>⭐ 4.8</td>
+          </tr>
+          <tr>
+            <td>McAfee Total Protection</td>
+            <td class="price-cell">$29.99</td>
+            <td>Unlimited</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td>⭐ 4.6</td>
+          </tr>
+          <tr>
+            <td>Kaspersky Internet Security</td>
+            <td class="price-cell">$27.99</td>
+            <td>3</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td>⭐ 4.8</td>
+          </tr>
+          <tr>
+            <td>Avast Premium Security</td>
+            <td class="price-cell">$24.99</td>
+            <td>1</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td>⭐ 4.5</td>
+          </tr>
+          <tr>
+            <td>ESET Internet Security</td>
+            <td class="price-cell">$31.99</td>
+            <td>3</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+            <td>⭐ 4.7</td>
+          </tr>
+          <tr>
+            <td>Trend Micro Maximum Security</td>
+            <td class="price-cell">$35.95</td>
+            <td>5</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+            <td>⭐ 4.5</td>
+          </tr>
+          <tr>
+            <td>Malwarebytes Premium</td>
+            <td class="price-cell">$33.74</td>
+            <td>1</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td>⭐ 4.8</td>
+          </tr>
+          <tr>
+            <td>AVG Ultimate</td>
+            <td class="price-cell">$59.99</td>
+            <td>Unlimited</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td>⭐ 4.4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="inner">
+    <div class="center">
+      <div class="s-tag">Customer Reviews</div>
+      <h2 class="s-title">What Our Customers Say</h2>
+      <p class="s-sub">Real reviews from real customers who trusted ShieldZone to protect their devices and data.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Bought Norton 360 Deluxe from ShieldZone and was absolutely blown away by how easy the whole process was. Got my license key within 30 seconds of payment. Installation was smooth and my computer has been running perfectly ever since."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div><div class="testi-name">Rahul Sharma</div><div class="testi-role">Software Developer · Delhi, India</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The comparison table on this site saved me so much time. I was confused between Bitdefender and Kaspersky but the table made it instantly clear which was right for my family. Great service and unbeatable prices."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div><div class="testi-name">Sarah Mitchell</div><div class="testi-role">Teacher · Manchester, UK</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I had a problem activating Malwarebytes and contacted support. They responded in under 10 minutes and solved my issue completely. That level of customer service is extremely rare these days. Highly recommend ShieldZone."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div><div class="testi-name">Mike Kowalski</div><div class="testi-role">Accountant · Warsaw, Poland</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Got the McAfee Total Protection plan for unlimited devices which covers my whole family. My kids' tablets, my wife's laptop, and my work PC are all protected under one subscription. Incredible value for money."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Ahmed Al-Rashid</div><div class="testi-role">Business Owner · Dubai, UAE</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <p class="testi-text">"Switched from a free antivirus to Avast Premium after reading about all the extra features. My computer feels so much more secure now. The Wi-Fi inspector caught a suspicious device on my network that I did not even know was there."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div><div class="testi-name">Priya Nair</div><div class="testi-role">Graphic Designer · Mumbai, India</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I run a small business and needed something reliable for multiple computers. ESET Internet Security has been absolutely solid for over a year now. Zero slowdowns and zero security incidents. ShieldZone made the whole purchase effortless."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">L</div>
+          <div><div class="testi-name">Laura Chen</div><div class="testi-role">Small Business Owner · Singapore</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="inner">
+    <div class="center">
+      <div class="s-tag">FAQ</div>
+      <h2 class="s-title">Frequently Asked Questions</h2>
+      <p class="s-sub">Everything you need to know before making your purchase. Still have questions? Our support team is available 24/7.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q">Are the antivirus license keys sold here genuine and official?</div>
+        <div class="faq-a">Absolutely yes. Every single license key sold through ShieldZone is 100% genuine, fully licensed, and sourced directly from the official software publishers. We do not sell grey-market, cracked, or pirated keys under any circumstances. All products come with the manufacturer's full warranty and update support.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How quickly will I receive my license key after purchase?</div>
+        <div class="faq-a">License keys are delivered instantly to your registered email address as soon as your payment is confirmed. In the vast majority of cases this takes under 60 seconds. Occasionally during high traffic periods it may take up to 5 minutes. If you do not receive your key within 15 minutes please contact our support team immediately.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I use one license key on multiple devices?</div>
+        <div class="faq-a">It depends entirely on the product and plan you purchase. Some products like McAfee Total Protection and AVG Ultimate cover unlimited devices under one subscription, while others like Avast Premium (single device plan) or Malwarebytes Premium cover just one device. The number of covered devices is clearly displayed on every product card and in the comparison table above.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is your refund policy?</div>
+        <div class="faq-a">We offer a full 30-day money-back guarantee on all products. If you are not completely satisfied with your purchase for any reason, contact our support team within 30 days of purchase and we will process a full refund to your original payment method promptly. No complicated procedures, no hidden conditions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Which antivirus is best for a Windows 11 PC?</div>
+        <div class="faq-a">For Windows 11, we highly recommend Norton 360 Deluxe or Bitdefender Total Security — both consistently score highest in independent tests for Windows protection and have extremely low system impact. If you are on a tighter budget, Kaspersky Internet Security is an excellent choice with outstanding detection rates. Use our comparison table above to see all features side by side.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do these products work on Mac and mobile devices?</div>
+        <div class="faq-a">Yes, several of our products including Bitdefender Total Security, Norton 360 Deluxe, McAfee Total Protection, and AVG Ultimate provide cross-platform protection covering Windows, macOS, iOS, and Android under a single subscription. Single-platform products are clearly labeled in their descriptions. Check the product description carefully before purchasing if you need Mac or mobile coverage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Start Protecting Your Digital Life Today 🛡️</h2>
+  <p>Join over 50 million users who trust ShieldZone-recommended antivirus software to keep their devices safe. Instant delivery. 30-day guarantee.</p>
+  <a href="" class="btn-white">Browse</a>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">Shield<span>Zone</span></span>
+      <p class="footer-desc">Your trusted source for premium antivirus software. Genuine licenses, instant delivery, and expert support since 2018.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="#">Norton 360 Deluxe</a>
+      <a href="#">Bitdefender Total Security</a>
+      <a href="#">McAfee Total Protection</a>
+      <a href="#">Kaspersky Internet Security</a>
+      <a href="#">Avast Premium Security</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="contact.html">Contact Us</a>
+      <a href="contact.html">Live Chat</a>
+      <a href="contact.html">Installation Help</a>
+      <a href="contact.html">Activation Guide</a>
+      <a href="contact.html">Refund Request</a>
+    </div>
+    <div class="footer-col">
+      <h4>Important Links</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="Terms.html">Terms of Service</a>
+      <a href="Refund.html">Refund Policy</a>
+      <a href="Disclaimer.html">Disclaimer</a>
+      <a href="About Us.html">About Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ShieldZone. All Rights Reserved. | All product names and logos are trademarks of their respective owners.</p>
+  </div>
+</footer>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Filter tabs (visual only)
+document.querySelectorAll('.f-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.f-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+// Nav shadow on scroll
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
+});
+</script>
+
+</body>
+</html>
